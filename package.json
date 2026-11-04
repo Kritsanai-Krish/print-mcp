@@ -1,6 +1,6 @@
 {
   "name": "print-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Instant LAN printing MCP server: discovers every printer, renders anything, prints in one call.",
   "license": "AGPL-3.0-or-later",
   "author": "Kritsanai-Krish",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "prepare": "npm run build",
+    "prepack": "npm run build",
     "start": "node dist/index.js",
     "test": "npm run build && node --test --test-concurrency=1 --test-timeout=240000 dist/test/unit.test.js dist/test/setup.test.js dist/test/doctor.test.js dist/test/e2e.test.js"
   },
