@@ -1,0 +1,10 @@
+{
+  "name": "Print Studio",
+  "short_name": "Print Studio",
+  "description": "พิมพ์ สแกน และจัดหน้ากระดาษในที่เดียว",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5f1",
+  "theme_color": "#f6f5f1",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

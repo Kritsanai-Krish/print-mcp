@@ -103,7 +103,7 @@ export function resolveLocalPath(source: string): string {
 
 // ---------- HTML templates ----------
 
-const BODY_FONT = `"Leelawadee UI","Tahoma","Segoe UI","Noto Sans Thai",sans-serif`;
+export const BODY_FONT = `"Leelawadee UI","Tahoma","Segoe UI","Noto Sans Thai",sans-serif`;
 const MONO_FONT = `"Cascadia Mono","Consolas","Tahoma",monospace`;
 
 function baseCss(o: PrintOptions): string {
@@ -361,6 +361,11 @@ async function htmlToPdf(r: HtmlRender): Promise<Buffer> {
     idleTimer = setTimeout(() => { void closeBrowser(); }, BROWSER_IDLE_MS);
     idleTimer.unref();
   }
+}
+
+/** Self-contained HTML (inline data: images only) to PDF bytes, for tools that compose a page themselves. */
+export async function renderHtmlToPdf(html: string, setup: PageSetup): Promise<Buffer> {
+  return htmlToPdf({ html, javascript: false, allowNetwork: false, setup, o: {} });
 }
 
 // ---------- Office ----------

@@ -126,7 +126,7 @@ test('tools are listed fast with a usable schema', async () => {
   const started = Date.now();
   const { tools } = await client.listTools();
   assert.ok(Date.now() - started < 1000);
-  for (const n of ['print', 'preview', 'list_printers', 'printer_status', 'job_status', 'cancel_job', 'print_test_page', 'identify_printer', 'print_raw', 'configure_printer', 'manage_presets', 'fix_printer', 'install_printer']) {
+  for (const n of ['print', 'preview', 'list_printers', 'printer_status', 'job_status', 'cancel_job', 'print_test_page', 'identify_printer', 'print_raw', 'configure_printer', 'manage_presets', 'fix_printer', 'install_printer', 'scan', 'image_edit', 'layout_page', 'manage_templates']) {
     assert.ok(tools.some(t => t.name === n), n);
   }
   assert.equal(tools.find(t => t.name === 'print')?._meta?.['anthropic/alwaysLoad'], true, 'print needs no extra round trip in Claude Code');
@@ -687,6 +687,35 @@ test('preview returns images and uses no paper', async () => {
   assert.equal(r.isError, false, r.text);
   assert.equal(r.images, 2);
   assert.equal(m.jobs.length, before);
+});
+
+test('layout_page previews by default, prints a centred square exactly, and image_edit/manage_templates answer over MCP', async () => {
+  const sharp = (await import('sharp')).default;
+  const img = path.join(work, 'red.png');
+  await sharp({ create: { width: 200, height: 200, channels: 3, background: '#ff0000' } }).png().toFile(img);
+  const m = printers.mockurf;
+  const before = m.jobs.length;
+  const items = [{ type: 'image', source: img, width_mm: 50 }, { type: 'text', text: 'สวัสดี <b>x</b>', y_mm: 10, center_x: true }];
+  const pv = await call('layout_page', { printer: 'mockurf', items });
+  assert.equal(pv.isError, false, pv.text);
+  assert.equal(pv.images, 1);
+  assert.equal(pv.json.layout.items, 2);
+  assert.equal(m.jobs.length, before, 'preview uses no paper');
+  const saved = path.join(work, 'page.png');
+  const pr = await call('layout_page', { printer: 'mockurf', items: [items[0]], print: true, save_as: saved });
+  assert.equal(pr.isError, false, pr.text);
+  await waitFor(m, before + 1);
+  const page = decodeRaster(m.jobs[m.jobs.length - 1].document).pages[0];
+  assert.deepEqual(pixel(page, page.width >> 1, page.height >> 1).slice(0, 3), [255, 0, 0]);
+  assert.deepEqual(pixel(page, 10, 10).slice(0, 3), [255, 255, 255]);
+  assert.ok(fs.statSync(saved).size > 500);
+  const ed = await call('image_edit', { source: img, ops: [{ op: 'pad', top: 5, color: 'white' }, { op: 'resize', width: 100 }] });
+  assert.equal(ed.isError, false, ed.text);
+  assert.equal(ed.json.files[0].width, 100);
+  assert.match((await call('image_edit', { source: img, ops: [{ op: 'nope' }] })).text, /Valid ops/);
+  const t = await call('manage_templates', { action: 'save', name: 'T', data: '{}', width_mm: 10, height_mm: 20 });
+  assert.equal(t.json.template.name, 'T');
+  assert.equal((await call('manage_templates', { action: 'list' })).json.count, 1);
 });
 
 test('presets: built-in, saved, deleted; explicit options win', async () => {

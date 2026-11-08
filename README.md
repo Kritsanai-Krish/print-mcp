@@ -43,6 +43,12 @@ Just say it, in any language:
 
 > Print this page 2-up, darker, with a "DRAFT" watermark: https://example.com/spec
 
+> Is the printer out of paper or ink?
+
+> Cancel that print
+
+> I put a page on the scanner, scan it and tell me what it says
+
 If you have one printer, or only one is on, it is used without asking. Otherwise the choice falls to your saved default, then the Windows default, then the most recently used. The AI only asks when the choice is truly open.
 
 ## Tools
@@ -52,8 +58,9 @@ If you have one printer, or only one is on, it is used without asking. Otherwise
 | `print` | Print a file, URL or text. One call, every setting optional |
 | `preview` | Same settings, returns page images, uses no paper |
 | `list_printers` | Everything known, from cache. `refresh` rescans |
-| `printer_status` | Live state, ink, paper, errors, jobs, all capabilities |
-| `job_status` / `cancel_job` | Follow or stop a job |
+| `printer_status` | Live state, ink, paper, scanner state, jobs, all capabilities, and `problems` in plain words with what to do (out of paper, ink empty, jam, cover open) |
+| `job_status` / `cancel_job` | Follow or stop a job. A waiting job shows `printer_problems` when the printer is stuck |
+| `scan` | Scan from the glass or feeder to PDF or JPEG (default `Documents\Scans`) and show the AI the first page. Network scanners over eSCL (AirScan, Mopria), USB scanners through Windows WIA |
 | `fix_printer` | Diagnose and repair: print service, offline or paused queues, stuck jobs, missing drivers, paper and ink errors, printers not found |
 | `install_printer` | Install a USB printer's driver through Windows, Windows Update or a file from the manufacturer |
 | `print_test_page` | Calibration sheet: rulers, line weights, color ramps, Thai text |
@@ -61,10 +68,19 @@ If you have one printer, or only one is on, it is used without asking. Otherwise
 | `print_raw` | Send ZPL, ESC/POS, PCL or PostScript untouched |
 | `configure_printer` | Default printer, aliases, saved defaults, add by IP, hide |
 | `manage_presets` | Named groups of settings |
+| `image_edit` | Image pipeline: trim, split, deskew, remove background, crop, resize, upscale, denoise, enhance scans, round, pad |
+| `layout_page` | Place images, text and shapes on a page in mm (centred, repeated in a grid), preview, then print |
+| `manage_templates` | Saved page layouts shared with the web editor (list, get, save, rename, delete, duplicate) |
 
 **Sources:** PDF, JPEG, PNG, WebP, TIFF, GIF, HEIC, Word, Excel, PowerPoint, RTF, HTML, Markdown, CSV, text and code (UTF-8, UTF-16, TIS-620), XPS, EPUB, URLs, `data:` URIs.
 
 **Settings:** paper, type, tray, pages, odd/even, reverse, copies, collate, duplex, orientation, rotate, scale mode, exact zoom, margins per side, borderless, alignment, n-up, frame thickness/color/style/gap, cell frames, color mode, quality, dpi, darkness, brightness, contrast, saturation, gamma, sharpen, ink saver, black-and-white threshold, invert, mirror, watermark, header, footer, fonts, line height, line numbers, CSS.
+
+## Images and page layout
+
+`image_edit` takes `source` (a path or `data:` URI) and `ops`, a list applied in order, for example `[{"op":"trim"},{"op":"remove_background"}]`. Ops: `trim`, `split` (last op, one file per object), `deskew`, `remove_background`, `crop`, `rotate`, `flip`, `resize`, `denoise`, `sharpen`, `upscale`, `enhance_document`, `adjust`, `grayscale`, `invert`, `threshold`, `round`, `border`, `pad`. Results go to `<state dir>/images/` (files older than 7 days are removed there) or to `output_file` / `output_dir`, and come back as `{files, ops_applied, notes, hint}`. `remove_background` has a `color` method (flood fill from the edges, always available) and an `ai` method that needs the optional package `@imgly/background-removal-node` (about 300 MB with its model runtime, so it is not installed by default). Images over 40 megapixels are refused with a fix.
+
+`layout_page` builds one page from `items` (`image`, `text`, `shape`, `copies`) in millimetres and returns a preview; add `print: true` to print it, `save_as` to keep a `.png` or `.pdf`. Example: an ID card copied 2 x 4 on A4 is an `image` item plus `{"type":"copies","of":0,"rows":4,"cols":2,"gap_mm":3}`.
 
 ## When something goes wrong
 
@@ -141,6 +157,7 @@ The server only talks over stdio; it opens no listening port. Please report secu
 - Duplex, PCL and TLS paths are covered by the mock printer only; they have not run on real hardware.
 - Printers that need IPP login, or accept only PCLm or PostScript, must go through their Windows driver queue.
 - Paper, jams, ink and first-time Wi-Fi setup need a person. No software can do these.
+- Network scanning uses eSCL over plain HTTP on port 80; scanners that offer eSCL only over HTTPS fall back to Windows WIA. WIA scans one page per call, also from a feeder.
 - A signature proves who published an installer, not that it is safe. Windows Protected Print blocks third-party drivers altogether.
 - A Windows queue with a TCP port pointing at an old IP is reported through its status but not re-pointed. Printing still works directly over the network.
 
@@ -182,3 +199,35 @@ To release, bump `version` in `package.json` and push a matching tag such as `v1
 ## License
 
 [AGPL-3.0-or-later](LICENSE), because the PDF engine, MuPDF, is AGPL. Using this tool yourself brings no obligations. If you distribute a modified version or offer it as a network service, you must share your source under the same license.
+
+## Web app
+
+`npm run build && npm run web` opens Print Studio at http://localhost:4177: print files or typed text with a live preview, scan and centre the page on paper, check ink and jobs, manage presets. It is an MCP client of this same server, so it does everything the tools do. It listens on localhost only; set `HOST` and `PORT` to change that.
+
+The web app is one page: a Canva-style editor (Fabric.js 7, MIT, bundled in `web/public/vendor`) where imported files, scans and typed text are all elements on the paper, then printed at 300 dpi. Ctrl+K opens the command palette.
+
+Double-click `start.bat` (Windows) or run `./start.sh` (macOS/Linux): it installs, builds if needed, starts the server and opens the browser.
+
+### Keeping it open, and the AI cursor
+
+`start.bat` / `start.sh` open Print Studio in its own browser window (Edge or Chrome app mode) and, if it is already running, just open a window on it. `autostart.bat` starts it at sign-in; `autostart-remove.bat` undoes that.
+
+While a page is open, every MCP tool call is shown on it: a vermilion cursor labelled "Claude" moves over the real controls, opens the real popups and sets the real fields, then the tool runs. Press Esc in the page to skip the animation. The MCP server reaches the page at `http://127.0.0.1:4177` (change with `PRINT_WEB_URL`); with no page open there is no delay. Set `PRINT_MCP_THEATER=off` to disable it.
+
+### Scripts (tool_list, tool_use, tool_write, tool_edit, tool_remove)
+
+When no tool does the job, the AI or you can write a small JavaScript script. It is saved as a plain file in the `tools` folder next to `config.json` (Windows: `%LOCALAPPDATA%\print-mcp	ools`), so it is still there tomorrow and runs again with `tool_use`, until you delete it. In Print Studio the "สคริปต์" button lists, writes, runs, edits and deletes them; the AI uses the same five tools.
+
+A script body is an async function with `args`, `call(toolName, args)`, `readFile(path)`, `writeFile(name, data)`, `sharp(buffer)`, `log()` and `toolList / toolUse / toolWrite / toolEdit / toolRemove`. Whatever it returns comes back as JSON; files it writes are listed and can be placed on the page.
+
+Scripts run in a separate Node process under Node's permission model: no file access of their own (reads and writes go through print-mcp, which only allows files named in `args`, files tools returned and the script's own output folder), no child processes, no `fetch`, a 60 s time limit. It is a guard rail for scripts you can read, not a hard security boundary: a script can still call any print-mcp tool, including `print`, with the same power the AI has.
+
+### Print Studio editor features
+
+Rulers (mm / cm / inch, draggable guides), snapping, text with 25 bundled Thai fonts, shapes / icons / emoji / QR / barcode / tables, free drawing, image filters, server-side image clean-up (trim, split scans, remove background, denoise, upscale), your own templates (saved through the `manage_templates` tool, so an AI sees them too), PDF / PNG / JPG / SVG export, right-click menu, command palette (Ctrl+K) and a shortcut sheet (`?`).
+
+Printing is WYSIWYG: pages are exported at 300 dpi with the true resolution stamped in, and printed at 100% edge to edge, so a 10 cm square prints 10 cm. The print sheet has a calibration percentage for printers that run slightly large or small.
+
+In Settings you choose how much of Claude's work you see: full (cursor, popups, screen locked), semi (works in the background, you keep editing, small status bar) or off. Holding Ctrl turns snapping off while dragging, resizing or rotating. Rotation snaps to 0°, 45° and 90°; Shift rotates in 15° steps.
+
+The editor has its own regression tests (`npm run test:ui`): they start the web server on a random port, drive Edge or Chrome with playwright-core and use no paper.

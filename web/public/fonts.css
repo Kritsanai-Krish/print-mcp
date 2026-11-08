@@ -1,0 +1,82 @@
+/* Bundled design fonts (SIL OFL), so Thai text prints the same on every machine. */
+@font-face{font-family:"Kanit";font-weight:400;font-display:swap;src:url(fonts/kanit-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Kanit";font-weight:400;font-display:swap;src:url(fonts/kanit-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Kanit";font-weight:700;font-display:swap;src:url(fonts/kanit-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Kanit";font-weight:700;font-display:swap;src:url(fonts/kanit-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Prompt";font-weight:400;font-display:swap;src:url(fonts/prompt-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Prompt";font-weight:400;font-display:swap;src:url(fonts/prompt-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Prompt";font-weight:700;font-display:swap;src:url(fonts/prompt-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Prompt";font-weight:700;font-display:swap;src:url(fonts/prompt-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Sarabun";font-weight:400;font-display:swap;src:url(fonts/sarabun-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Sarabun";font-weight:400;font-display:swap;src:url(fonts/sarabun-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Sarabun";font-weight:700;font-display:swap;src:url(fonts/sarabun-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Sarabun";font-weight:700;font-display:swap;src:url(fonts/sarabun-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Mitr";font-weight:400;font-display:swap;src:url(fonts/mitr-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Mitr";font-weight:400;font-display:swap;src:url(fonts/mitr-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Mitr";font-weight:700;font-display:swap;src:url(fonts/mitr-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Mitr";font-weight:700;font-display:swap;src:url(fonts/mitr-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Pridi";font-weight:400;font-display:swap;src:url(fonts/pridi-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Pridi";font-weight:400;font-display:swap;src:url(fonts/pridi-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Pridi";font-weight:700;font-display:swap;src:url(fonts/pridi-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Pridi";font-weight:700;font-display:swap;src:url(fonts/pridi-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Itim";font-weight:400;font-display:swap;src:url(fonts/itim-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Itim";font-weight:400;font-display:swap;src:url(fonts/itim-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Chonburi";font-weight:400;font-display:swap;src:url(fonts/chonburi-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Chonburi";font-weight:400;font-display:swap;src:url(fonts/chonburi-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Niramit";font-weight:400;font-display:swap;src:url(fonts/niramit-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Niramit";font-weight:400;font-display:swap;src:url(fonts/niramit-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Niramit";font-weight:700;font-display:swap;src:url(fonts/niramit-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Niramit";font-weight:700;font-display:swap;src:url(fonts/niramit-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"K2D";font-weight:400;font-display:swap;src:url(fonts/k2d-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"K2D";font-weight:400;font-display:swap;src:url(fonts/k2d-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"K2D";font-weight:700;font-display:swap;src:url(fonts/k2d-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"K2D";font-weight:700;font-display:swap;src:url(fonts/k2d-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Mali";font-weight:400;font-display:swap;src:url(fonts/mali-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Mali";font-weight:400;font-display:swap;src:url(fonts/mali-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Mali";font-weight:700;font-display:swap;src:url(fonts/mali-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Mali";font-weight:700;font-display:swap;src:url(fonts/mali-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Noto Serif Thai";font-weight:400;font-display:swap;src:url(fonts/noto-serif-thai-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Noto Serif Thai";font-weight:400;font-display:swap;src:url(fonts/noto-serif-thai-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Noto Serif Thai";font-weight:700;font-display:swap;src:url(fonts/noto-serif-thai-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Noto Serif Thai";font-weight:700;font-display:swap;src:url(fonts/noto-serif-thai-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Bai Jamjuree";font-weight:400;font-display:swap;src:url(fonts/bai-jamjuree-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Bai Jamjuree";font-weight:400;font-display:swap;src:url(fonts/bai-jamjuree-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Bai Jamjuree";font-weight:700;font-display:swap;src:url(fonts/bai-jamjuree-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Bai Jamjuree";font-weight:700;font-display:swap;src:url(fonts/bai-jamjuree-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Athiti";font-weight:400;font-display:swap;src:url(fonts/athiti-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Athiti";font-weight:400;font-display:swap;src:url(fonts/athiti-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Athiti";font-weight:700;font-display:swap;src:url(fonts/athiti-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Athiti";font-weight:700;font-display:swap;src:url(fonts/athiti-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Pattaya";font-weight:400;font-display:swap;src:url(fonts/pattaya-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Pattaya";font-weight:400;font-display:swap;src:url(fonts/pattaya-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Charm";font-weight:400;font-display:swap;src:url(fonts/charm-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Charm";font-weight:400;font-display:swap;src:url(fonts/charm-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Charm";font-weight:700;font-display:swap;src:url(fonts/charm-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Charm";font-weight:700;font-display:swap;src:url(fonts/charm-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Maitree";font-weight:400;font-display:swap;src:url(fonts/maitree-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Maitree";font-weight:400;font-display:swap;src:url(fonts/maitree-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Maitree";font-weight:700;font-display:swap;src:url(fonts/maitree-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Maitree";font-weight:700;font-display:swap;src:url(fonts/maitree-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Krub";font-weight:400;font-display:swap;src:url(fonts/krub-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Krub";font-weight:400;font-display:swap;src:url(fonts/krub-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Krub";font-weight:700;font-display:swap;src:url(fonts/krub-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Krub";font-weight:700;font-display:swap;src:url(fonts/krub-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Srisakdi";font-weight:400;font-display:swap;src:url(fonts/srisakdi-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Srisakdi";font-weight:400;font-display:swap;src:url(fonts/srisakdi-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Srisakdi";font-weight:700;font-display:swap;src:url(fonts/srisakdi-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Srisakdi";font-weight:700;font-display:swap;src:url(fonts/srisakdi-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Trirong";font-weight:400;font-display:swap;src:url(fonts/trirong-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Trirong";font-weight:400;font-display:swap;src:url(fonts/trirong-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Trirong";font-weight:700;font-display:swap;src:url(fonts/trirong-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Trirong";font-weight:700;font-display:swap;src:url(fonts/trirong-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Taviraj";font-weight:400;font-display:swap;src:url(fonts/taviraj-thai-400-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Taviraj";font-weight:400;font-display:swap;src:url(fonts/taviraj-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Taviraj";font-weight:700;font-display:swap;src:url(fonts/taviraj-thai-700-normal.woff2) format("woff2");unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:"Taviraj";font-weight:700;font-display:swap;src:url(fonts/taviraj-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Pacifico";font-weight:400;font-display:swap;src:url(fonts/pacifico-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Oswald";font-weight:400;font-display:swap;src:url(fonts/oswald-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Oswald";font-weight:700;font-display:swap;src:url(fonts/oswald-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Playfair Display";font-weight:400;font-display:swap;src:url(fonts/playfair-display-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Playfair Display";font-weight:700;font-display:swap;src:url(fonts/playfair-display-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Bebas Neue";font-weight:400;font-display:swap;src:url(fonts/bebas-neue-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Lobster";font-weight:400;font-display:swap;src:url(fonts/lobster-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
