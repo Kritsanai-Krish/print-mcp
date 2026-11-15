@@ -129,7 +129,8 @@ test('tools are listed fast with a usable schema', async () => {
   for (const n of ['print', 'preview', 'list_printers', 'printer_status', 'job_status', 'cancel_job', 'print_test_page', 'identify_printer', 'print_raw', 'configure_printer', 'manage_presets', 'fix_printer', 'install_printer', 'scan', 'image_edit', 'layout_page', 'manage_templates']) {
     assert.ok(tools.some(t => t.name === n), n);
   }
-  assert.equal(tools.find(t => t.name === 'print')?._meta?.['anthropic/alwaysLoad'], true, 'print needs no extra round trip in Claude Code');
+  // Nothing is always loaded: an idle printer server should cost the client no context.
+  assert.ok(tools.every(t => t._meta?.['anthropic/alwaysLoad'] === undefined), 'no tool is always loaded');
 });
 
 test('fix_printer says what a person must do, and prints nothing', async () => {
